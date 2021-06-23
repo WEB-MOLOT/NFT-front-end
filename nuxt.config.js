@@ -26,6 +26,10 @@ export default {
 
     script: [
       {
+        src: "https://code.jquery.com/jquery-3.3.1.slim.min.js",
+        type: "text/javascript"
+      },
+      {
         src: "/js/libs.js",
         type: "text/javascript",
         body: true
@@ -61,7 +65,43 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
+
+
+  // auth: {
+  //   token: {
+  //     prefix: '_token.'
+  //   },
+  //   localStorage: {
+  //     prefix: '_auth.'
+  //   },
+  //   redirect: {
+  //     logout: '/login',
+  //     home: '/',
+  //   },
+  //   strategies: {
+  //     local: {
+  //       endpoints: {
+  //         login: {
+  //           url: 'login',
+  //           method: 'post',
+  //           propertyName: 'meta.token'
+  //         },
+  //         logout: {
+  //           url: 'logout',
+  //           method: 'post'
+  //         },
+  //         user: {
+  //           url: 'me',
+  //           method: 'get',
+  //           propertyName: 'data'
+  //         }
+  //       }
+  //     }
+  //   }
+  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

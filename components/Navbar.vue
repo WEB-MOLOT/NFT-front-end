@@ -143,8 +143,7 @@
             </a>
             <div class="header__cabinet">
 
-              <a href="#" class="header__signin signin--js">Sign In</a>
-
+              <a href="#" class="header__signin signin--js" id="signin">Sign In</a>
 
             </div>
           </div>
