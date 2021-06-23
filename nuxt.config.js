@@ -1,3 +1,5 @@
+let development = process.env.NODE_ENV !== 'production';
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -69,39 +71,42 @@ export default {
     '@nuxtjs/auth-next'
   ],
 
+  axios: {
+    baseURL: development ? 'http://nftapi.local' : 'https://nftapi.io/api',
+  },
 
-  // auth: {
-  //   token: {
-  //     prefix: '_token.'
-  //   },
-  //   localStorage: {
-  //     prefix: '_auth.'
-  //   },
-  //   redirect: {
-  //     logout: '/login',
-  //     home: '/',
-  //   },
-  //   strategies: {
-  //     local: {
-  //       endpoints: {
-  //         login: {
-  //           url: 'login',
-  //           method: 'post',
-  //           propertyName: 'meta.token'
-  //         },
-  //         logout: {
-  //           url: 'logout',
-  //           method: 'post'
-  //         },
-  //         user: {
-  //           url: 'me',
-  //           method: 'get',
-  //           propertyName: 'data'
-  //         }
-  //       }
-  //     }
-  //   }
-  // },
+  auth: {
+    token: {
+      prefix: '_token.'
+    },
+    localStorage: {
+      prefix: '_auth.'
+    },
+    redirect: {
+      logout: '/login',
+      home: '/',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: 'login',
+            method: 'post',
+            propertyName: 'meta.token'
+          },
+          logout: {
+            url: 'logout',
+            method: 'post'
+          },
+          user: {
+            url: 'me',
+            method: 'get',
+            propertyName: 'data'
+          }
+        }
+      }
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
