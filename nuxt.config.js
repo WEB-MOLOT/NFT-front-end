@@ -72,7 +72,7 @@ export default {
   ],
 
   axios: {
-    baseURL: development ? 'http://nftapi.local' : 'https://nftapi.io/api',
+    baseURL: development ? 'http://nftapi.local' : 'https://nftapi.io',
   },
 
   auth: {
@@ -87,6 +87,11 @@ export default {
       home: '/',
     },
     strategies: {
+      'laravelSanctum': {
+        provider: 'laravel/sanctum',
+        url: 'http://nftapi.local'
+      },
+
       local: {
         endpoints: {
           login: {

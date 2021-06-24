@@ -293,7 +293,7 @@
     </div><!-- end delete-modal -->
 
     <login></login>
-    <registration></registration>
+    <register></register>
 
     <div id="forgot-modal" class="forgot-modal modal modal_item" style="display: none;">
       <div class="modal__top">
@@ -321,9 +321,8 @@
 
 <script>
 import Login from './auth/Login';
-import Registration from "./auth/Registration";
-
+import Register from "./auth/Register";
 export default {
-  components: {Login, Registration}
+  components: {Login, Register}
 }
 </script>

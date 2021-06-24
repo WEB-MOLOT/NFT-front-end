@@ -59,7 +59,9 @@ export default {
         twitter_id: '',
         password: '',
         password_confirmation: '',
-      }
+      },
+
+      show: true,
     }
   },
 
@@ -67,7 +69,8 @@ export default {
     register() {
       this.$axios.post('register', this.user)
         .then(response => {
-          console.log(response);
+          this.show = false;
+          this.$router.push('/')
         })
     }
   }

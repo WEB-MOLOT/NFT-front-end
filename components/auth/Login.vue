@@ -91,13 +91,12 @@ export default {
   methods: {
     login() {
         try {
-          this.$auth.loginWith('local', {
+          this.$auth.loginWith('laravelSanctum', {
             data: {
               email: this.email,
               password: this.password
             },
           });
-
         } catch ({response}) {
           if (response) {
             this.error.push(response.data)
