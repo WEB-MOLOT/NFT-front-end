@@ -143,7 +143,8 @@
             </a>
             <div class="header__cabinet">
 
-              <a href="#" class="header__signin signin--js" id="signin">Sign In</a>
+              <a href="" v-if="$auth.loggedIn">{{ $auth.user.email }}</a>
+              <a href="#" class="header__signin signin--js" id="signin" v-else>Sign In</a>
 
             </div>
           </div>

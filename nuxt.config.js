@@ -76,40 +76,28 @@ export default {
   },
 
   auth: {
-    token: {
-      prefix: '_token.'
-    },
-    localStorage: {
-      prefix: '_auth.'
-    },
-    redirect: {
-      logout: '/login',
-      home: '/',
-    },
     strategies: {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
-        url: 'http://nftapi.local'
-      },
+        url: 'http://localhost:8000',
 
-      local: {
         endpoints: {
           login: {
-            url: 'login',
+            url: '/login',
             method: 'post',
             propertyName: 'meta.token'
           },
           logout: {
-            url: 'logout',
+            url: '/logout',
             method: 'post'
           },
           user: {
-            url: 'me',
+            url: '/user',
             method: 'get',
             propertyName: 'data'
           }
         }
-      }
+      },
     }
   },
 

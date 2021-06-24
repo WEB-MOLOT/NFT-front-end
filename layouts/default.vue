@@ -26,5 +26,9 @@ import Foot from '@/components/Foot.vue';
 
 export default {
   components: {Navbar, Modals, Foot},
+
+  mounted() {
+    console.log(this.$auth.user);
+  }
 }
 </script>

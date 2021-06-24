@@ -90,22 +90,12 @@ export default {
 
   methods: {
     login() {
-        try {
-          this.$auth.loginWith('laravelSanctum', {
-            data: {
-              email: this.email,
-              password: this.password
-            },
-          });
-        } catch ({response}) {
-          if (response) {
-            this.error.push(response.data)
-          } else {
-            console.log('Error', err.message)
-          }
-        } finally {
-          this.loading = false;
-        }
+        this.$auth.loginWith('laravelSanctum', {
+          data: {
+            email: this.email,
+            password: this.password
+          },
+        });
     },
 
 
