@@ -10,7 +10,7 @@
     </div>
     <form @submit.prevent="register" class="modal__body">
       <div class="modal__links flex">
-        <a href="#" class="modal__link signin--js">Sign In</a>
+        <a href="#" class="modal__link signin--js" @click="showLoginModal">Sign In</a>
         <a href="javascript:void(0)" class="modal__link active">Registration</a>
       </div>
       <div class="modal__box">
@@ -65,13 +65,35 @@ export default {
     }
   },
 
+  mounted() {
+      // this.$axios.get('api/token')
+      //   .then(response => {
+      //     this.user._token = response.data;
+      //   })
+  },
+
   methods: {
     register() {
-      this.$axios.post('register', this.user)
+
+      this.$axios.post('register', this.user, {headers: {'X-Requested-With': 'XMLHttpRequest'},withCredentials: true})
         .then(response => {
-          this.show = false;
-          this.$router.push('/')
+          this.$auth.loginWith('laravelSanctum', {
+            data: {
+              email: this.user.email,
+              password: this.user.password
+            },
+          });
         })
+    },
+
+    showLoginModal() {
+      $.fancybox.open({
+        closeExisting: true,
+        loop: false,
+        src: '#signin-modal',
+        baseClass: 'dark-fancybox',
+        touch: false,
+      });
     }
   }
 }

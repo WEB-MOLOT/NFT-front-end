@@ -180,8 +180,7 @@
                       </div>
                     </client-only>
                   </div>
-                  <div class="filter__bottom">
-                    <client-only>
+                  <div class="filter__bottom ">
                       <div class="filter__bottom-wrap flex bottom delay-6">
                         <div class="filter__bottom-title">
                           <div class="filter__title">
@@ -355,8 +354,6 @@
                           </div>
                         </a>
                       </div>
-
-                    </client-only>
                   </div>
               </div>
             </div>
@@ -748,7 +745,21 @@ export default {
     }
   },
 
+  mounted() {
+    inView('.bottom').on('enter', function (event, isInView) {
+      $(event).addClass('bottom_visible');
+    });
+
+    this.init();
+  },
+
   methods: {
+    init() {
+        this.$axios.get('projects')
+        .then(response => {
+            console.log(response);
+        });
+    },
     nextSlide() {
       this.$refs.carousel.next();
     },

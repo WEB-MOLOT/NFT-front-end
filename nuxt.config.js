@@ -23,14 +23,10 @@ export default {
       {property: "og:image:height", content: "250" },
     ],
     link: [
-      { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.svg' }
+      { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.svg' },
     ],
 
     script: [
-      {
-        src: "https://code.jquery.com/jquery-3.3.1.slim.min.js",
-        type: "text/javascript"
-      },
       {
         src: "/js/libs.js",
         type: "text/javascript",
@@ -48,7 +44,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/index.css',
-    '@/assets/css/libs.css'
+    '@/assets/css/libs.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -68,36 +64,47 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next',
+    'vue-sweetalert2/nuxt'
   ],
 
   axios: {
-    baseURL: development ? 'http://nftapi.local' : 'https://nftapi.io',
+    baseURL: development ? 'http://nftapi.local/api' : 'https://nftapi.io/api',
+    withCredentials: true
   },
 
   auth: {
     strategies: {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
-        url: 'http://localhost:8000',
+        url: 'http://nftapi.local',
 
         endpoints: {
           login: {
-            url: '/login',
+            url: '/api/login',
             method: 'post',
             propertyName: 'meta.token'
           },
           logout: {
-            url: '/logout',
+            url: '/api/logout',
             method: 'post'
           },
           user: {
-            url: '/user',
+            url: '/api/user',
             method: 'get',
             propertyName: 'data'
           }
+        },
+        user: {
+          property: false
         }
       },
+    },
+
+    redirect: {
+      login: "/login",
+      logout: '/',
+      home: '/'
     }
   },
 

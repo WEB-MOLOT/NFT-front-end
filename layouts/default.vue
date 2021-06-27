@@ -11,11 +11,7 @@
 <!--  @@if (preloadSlider === true) {-->
 <!--  <link rel="preload" as="image" href="img/promo/bg.jpg">-->
 <!--  <link rel="preload" as="image" href="img/promo/bg-2.jpg">-->
-<!--  }-->
-<!--  <script src="js/libs.js" rel="preload" as="script"></script>-->
-<!--  @@if (datepicker === true) {-->
-  <!--script src="js/libsDatepicker.js" rel="preload" as="script"></script-->
-<!--  }-->
+
 <!--  <script src="js/index.js" rel="preload" as="script"></script>-->
 </template>
 

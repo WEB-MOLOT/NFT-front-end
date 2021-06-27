@@ -11,7 +11,7 @@
     <form @submit.prevent="login" class="modal__body">
       <div class="modal__links flex">
         <a href="javascript:void(0)" class="modal__link active">Sign In</a>
-        <a href="#" class="modal__link registration--js">Registration</a>
+        <a href="#" class="modal__link registration--js" @click="showRegisterModal">Registration</a>
       </div>
       <div class="modal__social">
         <a href="#" class="modal__social-link google flex">
@@ -96,6 +96,16 @@ export default {
             password: this.password
           },
         });
+    },
+
+    showRegisterModal() {
+      $.fancybox.open({
+        closeExisting: true,
+        loop: false,
+        src: '#registration-modal',
+        baseClass: 'dark-fancybox',
+        touch: false,
+      });
     },
 
 
