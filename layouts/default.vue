@@ -12,7 +12,6 @@
 <!--  <link rel="preload" as="image" href="img/promo/bg.jpg">-->
 <!--  <link rel="preload" as="image" href="img/promo/bg-2.jpg">-->
 
-<!--  <script src="js/index.js" rel="preload" as="script"></script>-->
 </template>
 
 <script>
@@ -24,7 +23,7 @@ export default {
   components: {Navbar, Modals, Foot},
 
   mounted() {
-    console.log(this.$auth.user);
+
   }
 }
 </script>

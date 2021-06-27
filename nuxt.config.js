@@ -11,16 +11,16 @@ export default {
       { charset: 'utf-8' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
-      { name: "format-detection", content: "telephone=no" },
-      { name: "format-detection", content: "address=no" },
-      { property: "og:site_name", content: "NFT projects" },
-      { property: "og:title", content: "NFT projects" },
-      { property: "og:description", content: "All NFT Presales" },
-      { property: "og:url", content: "#" },
-      { property:"og:locale", content:"ru_RU" },
-      { property:"og:image", content:"img/avatar.png" },
-      { property: "og:image:width", content: "250" },
-      {property: "og:image:height", content: "250" },
+      // { name: "format-detection", content: "telephone=no" },
+      // { name: "format-detection", content: "address=no" },
+      // { property: "og:site_name", content: "NFT projects" },
+      // { property: "og:title", content: "NFT projects" },
+      // { property: "og:description", content: "All NFT Presales" },
+      // { property: "og:url", content: "#" },
+      // { property:"og:locale", content:"ru_RU" },
+      // { property:"og:image", content:"img/avatar.png" },
+      // { property: "og:image:width", content: "250" },
+      // {property: "og:image:height", content: "250" },
     ],
     link: [
       { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.svg' },
@@ -28,16 +28,20 @@ export default {
 
     script: [
       {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js',
+        body: true
+      },
+      {
         src: "/js/libs.js",
         type: "text/javascript",
-        body: true
+        body: true,
       },
       {
         src: "/js/index.js",
         type: "text/javascript",
-        body: true
+        body: true,
+        defer: true
       },
-
     ]
   },
 
