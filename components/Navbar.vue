@@ -144,7 +144,7 @@
             <div class="header__cabinet">
 
               <div class="header__profile" v-if="$auth.loggedIn">
-                <div class="header__profile-box flex">
+                <div class="header__profile-box flex" @click="profileDropdown">
                   <div class="header__profile-name">{{ $auth.user.email.split("@")[0] }}</div>
                   <div class="header__profile-arrow">
                     <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -191,6 +191,11 @@
 <script>
 
 export default {
+  data() {
+    return {
+    }
+  },
+
   methods: {
     logout() {
       this.$auth.logout();
@@ -204,6 +209,17 @@ export default {
         baseClass: 'dark-fancybox',
         touch: false,
       });
+    },
+
+    profileDropdown() {
+      $('.header__profile').toggleClass('active');
+
+      if( $('.header__profile').hasClass('active')) {
+        $('.header__profile-block').slideDown();
+      } else {
+        $('.header__profile-block').slideUp();
+        $(".header__profile").removeClass("active");
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div id="signin-modal" class="signin-modal modal modal_item" style="display: none;">
+  <div id="signin-modal" class="signin-modal modal modal_item fancybox-content" style="display: none;">
     <div class="modal__top">
       <div class="modal__closed flex-center svg-contain" data-fancybox-close>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,6 +95,8 @@ export default {
             email: this.email,
             password: this.password
           },
+        }).then(response => {
+          this.closeModal();
         });
     },
 
@@ -108,6 +110,9 @@ export default {
       });
     },
 
+    closeModal() {
+      $.fancybox.close();
+    },
 
     clear () {
       this.$refs.form.reset()

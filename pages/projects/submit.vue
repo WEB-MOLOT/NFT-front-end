@@ -16,18 +16,18 @@
       <div class="wrapper wrapper_big">
         <div class="submit__body flex">
           <div class="submit__left">
-            <div class="submit__title title bottom">Submit<br> New ICO</div>
-            <div class="submit__subtitle bottom">Before submitting a project for moderation, please first check that it isn't already listed in our ICO database. We don't guarantee that your ICO will be listed on the ICOmarks, but if your project
+            <div class="submit__title title bottom bottom_visible">Submit<br> New ICO</div>
+            <div class="submit__subtitle bottom bottom_visible">Before submitting a project for moderation, please first check that it isn't already listed in our ICO database. We don't guarantee that your ICO will be listed on the ICOmarks, but if your project
               interests us, then we will publish it as soon as possible.</div>
           </div>
           <div class="submit__right">
-            <form @submit.prevent="saveProject" class="contacts__form form">
+            <form @submit.prevent="saveProject" ref="form" class="contacts__form form">
 
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <input type="text" name="text" class="form__field field" v-model="project.name" placeholder="The name of the project">
               </label>
 
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <div class="file flex success">
                   <div class="file__box flex">
                     <div class="file__link">Select a file</div>
@@ -37,7 +37,7 @@
                 </div>
               </label>
 
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <div class="file flex error">
                   <div class="file__box flex">
                     <div class="file__link">Select a file</div>
@@ -47,7 +47,7 @@
                 </div>
               </label>
 
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <div class="filter__category">
                   <div class="form__caption">Project category</div>
                   <div class="filter__category-items flex">
@@ -68,7 +68,7 @@
                 </div>
               </label>
 
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <div class="form__info flex">
                   <div class="form__info-value flex">
                     <div class="form__radio form__radio_1">
@@ -86,7 +86,7 @@
                 </div>
               </label>
 
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <div class="form__info flex">
                   <div class="form__date">
                     <div class="form__date-icon svg-contain">
@@ -127,11 +127,11 @@
                 </div>
               </label>
 
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <textarea class="form__field field" v-model="project.content" placeholder="Project description"></textarea>
               </label>
 
-              <div class="form__label form__label_older bottom">
+              <div class="form__label form__label_older bottom bottom_visible">
                 <div class="form__flex flex">
                   <div class="form__flex-box">
                     <div class="form__currency">
@@ -177,13 +177,13 @@
                 </div>
               </div>
 
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <input type="text" name="text" class="form__field field" v-model="project.website" placeholder="To the project site*">
               </label>
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <input type="text" name="text" class="form__field field" v-model="project.email" placeholder="Email*">
               </label>
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <input type="text" name="text" class="form__field field" v-model="project.twitter" placeholder="Twitter*">
               </label>
 
@@ -197,7 +197,7 @@
                 </div>
               </div>
 
-              <label class="form__label form__label_social form__label_older bottom">
+              <label class="form__label form__label_social form__label_older bottom bottom_visible">
                 <div class="select-social">
                   <div class="select-social__title flex">
                     <div class="select-social__title-value">Add a social network</div>
@@ -224,7 +224,7 @@
                   </div>
                 </div>
               </label>
-              <label class="form__label bottom">
+              <label class="form__label bottom bottom_visible">
                 <button class="form__btn btn btn_blue" type="submit">
                   <div class="btn__caption">site project</div>
                   <div class="btn__icon svg-contain">
@@ -257,18 +257,18 @@ export default {
         logo: [],
         images: [],
         categories: [],
-        active: true,
-        upcoming: true,
+        active: false,
+        upcoming: false,
         start_date: '',
         end_date: '',
-        content: 'test description',
+        content: '',
         currency: 'USD',
-        min_price: '12',
-        max_price: '123',
-        available_count: '12',
-        website: 'asdfasdfasd',
-        email: 'ahmadshohnas@gmadsf.asdfas',
-        twitter: 'asdfasdfasdf',
+        min_price: '',
+        max_price: '',
+        available_count: '',
+        website: '',
+        email: '',
+        twitter: '',
         socials: []
       },
 
@@ -344,6 +344,8 @@ export default {
     inView('.bottom').on('enter', function (event, isInView) {
       $(event).addClass('bottom_visible');
     });
+
+    // $('.bottom').addClass('bottom_visible');
   },
 
   methods: {
@@ -368,7 +370,11 @@ export default {
 
       this.$axios.post('projects', formData, { headers: { "Content-Type": "multipart/form-data" } })
         .then(response => {
-          console.log(response);
+          this.$swal('Успешно!', "Ваш проект успешно отправлен на модернизации!", 'success');
+          this.$refs.form.reset();
+        })
+        .catch(error => {
+          this.$swal('Ошибка!', "Что-то пошло не так! Повторите попытку позже", 'error');
         })
     },
 

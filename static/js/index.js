@@ -2950,15 +2950,7 @@ $(".arrow-top").on("click", function () {
 
 $(document).ready(function () {
   if ($(".header__profile-box").length > 0){
-    $('.header__profile-box').on("click", function(){
-      $(this).parent().toggleClass('active');
-      if( $(this).parent().hasClass('active')) {
-        $(this).next().slideDown();
-      } else {
-        $('.header__profile-block').slideUp();
-        $(".header__profile").removeClass("active");
-      }
-    });
+
     $('.header__profile-link').on("click", function(){
       $('.header__profile-block').slideUp();
       $(".header__profile").removeClass("active");
